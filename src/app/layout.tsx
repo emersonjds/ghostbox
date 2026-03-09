@@ -26,13 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-background to-background/95`}
       >
         <Providers>
           <Header />
-          <main className="container mx-auto px-4 py-8">
+          <main className="container mx-auto max-w-4xl px-4 py-8">
             {children}
           </main>
           <Toaster />

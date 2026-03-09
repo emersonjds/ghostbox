@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { USE_MOCK, mockGetInbox } from "@/lib/mock-data";
 import { connectDB } from "@/lib/mongodb";
 import { FakeIdentity } from "@/model/fake-identity";
 import { EmailMessage } from "@/model/email-message";
@@ -8,9 +9,20 @@ export async function GET(
   { params }: { params: Promise<{ emailId: string }> },
 ) {
   try {
-    await connectDB();
-
     const { emailId } = await params;
+
+    if (USE_MOCK) {
+      const data = mockGetInbox(emailId);
+      if (!data) {
+        return NextResponse.json(
+          { error: "Identity not found or expired" },
+          { status: 404 },
+        );
+      }
+      return NextResponse.json(data);
+    }
+
+    await connectDB();
 
     const identity = await FakeIdentity.findOne({ emailId }).lean();
     if (!identity) {

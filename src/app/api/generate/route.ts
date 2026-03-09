@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { USE_MOCK, mockGenerateIdentity } from "@/lib/mock-data";
 import { connectDB } from "@/lib/mongodb";
 import { FakeIdentity } from "@/model/fake-identity";
 import { generateUniqueEmail } from "@/lib/generate-email";
@@ -7,6 +8,11 @@ import { IDENTITY_TTL_HOURS } from "@/lib/constants";
 
 export async function POST() {
   try {
+    if (USE_MOCK) {
+      const identity = mockGenerateIdentity();
+      return NextResponse.json(identity);
+    }
+
     await connectDB();
 
     const { emailId, emailAddress } = await generateUniqueEmail();
