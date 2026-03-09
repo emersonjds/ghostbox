@@ -1,20 +1,21 @@
+import Image from "next/image";
 import { GenerateIdentity } from "@/components/generate-identity";
-import { Mail, Phone, Clock, ShieldCheck } from "lucide-react";
+import { Mail, Phone, Clock } from "lucide-react";
 
 export default function HomePage() {
   return (
     <div className="flex flex-col items-center justify-center gap-12 py-16 md:py-24">
       <div className="text-center space-y-4">
-        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-emerald-500/10 ring-1 ring-emerald-500/20">
-          <ShieldCheck className="h-10 w-10 text-emerald-500" />
+        <div className="mx-auto mb-6">
+          <Image src="/logo.svg" alt="Ghostbox" width={96} height={96} priority />
         </div>
         <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-          Identidade <span className="text-emerald-500">temporaria</span>
+          Identidade <span className="text-emerald-500">fantasma</span>
           <br />em segundos
         </h1>
         <p className="mx-auto max-w-lg text-lg text-muted-foreground">
-          Gere um email e telefone falsos para testar servicos sem expor seus dados reais.
-          Sem login, sem cadastro, sem complicacao.
+          Gere um email e telefone temporarios que desaparecem sozinhos.
+          Sem login, sem cadastro, sem rastro.
         </p>
       </div>
 

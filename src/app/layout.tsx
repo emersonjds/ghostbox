@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FakeRegister - Email & Telefone Temporarios",
-  description: "Gere email e telefone temporarios para testar servicos sem expor dados reais.",
+  title: "Ghostbox - Temporary Email & Phone",
+  description: "Temporary email and phone that disappear. Open source, no login, no sign-up.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="dark">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gradient-to-b from-background to-background/95`}
       >
