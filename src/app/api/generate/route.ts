@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
-import { FakeIdentity } from "@/lib/models/fake-identity";
+import { FakeIdentity } from "@/model/fake-identity";
 import { generateUniqueEmail } from "@/lib/generate-email";
 import { generateFakePhoneBR } from "@/lib/generate-phone";
 import { IDENTITY_TTL_HOURS } from "@/lib/constants";

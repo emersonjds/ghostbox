@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
-import { FakeIdentity } from "@/lib/models/fake-identity";
-import { EmailMessage } from "@/lib/models/email-message";
+import { FakeIdentity } from "@/model/fake-identity";
+import { EmailMessage } from "@/model/email-message";
 import { verifyMailgunSignature } from "@/lib/verify-mailgun";
 
 export async function POST(request: NextRequest) {

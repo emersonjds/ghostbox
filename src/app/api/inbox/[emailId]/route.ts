@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
-import { FakeIdentity } from "@/lib/models/fake-identity";
-import { EmailMessage } from "@/lib/models/email-message";
+import { FakeIdentity } from "@/model/fake-identity";
+import { EmailMessage } from "@/model/email-message";
 
 export async function GET(
   _request: NextRequest,
-  { params }: { params: Promise<{ emailId: string }> }
+  { params }: { params: Promise<{ emailId: string }> },
 ) {
   try {
     await connectDB();
@@ -16,7 +16,7 @@ export async function GET(
     if (!identity) {
       return NextResponse.json(
         { error: "Identity not found or expired" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -32,7 +32,7 @@ export async function GET(
         createdAt: identity.createdAt,
         expiresAt: identity.expiresAt,
       },
-      messages: messages.map((msg) => ({
+      messages: messages.map((msg: any) => ({
         id: msg._id,
         from: msg.from,
         subject: msg.subject,
@@ -45,7 +45,7 @@ export async function GET(
     console.error("Error fetching inbox:", error);
     return NextResponse.json(
       { error: "Failed to fetch inbox" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
